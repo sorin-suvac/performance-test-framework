@@ -1,0 +1,11 @@
+services:
+  k6:
+    image: grafana/k6
+    container_name: k6
+    depends_on:
+      - springboot-app
+      - grafana
+      - prometheus
+    volumes:
+      - ../src/test/k6:/scripts
+    entrypoint: [ "k6", "run", "/scripts/run.js" ]

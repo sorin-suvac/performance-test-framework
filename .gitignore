@@ -1,3 +1,7 @@
-.idea
-target
+.idea/
+target/
 notes.txt
+/package.json
+/package-lock.json
+/node_modules/
+/monitoring/grafana/data/
