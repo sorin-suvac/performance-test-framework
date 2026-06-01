@@ -1,0 +1,32 @@
+Requests Per Second (RPS)
+sum(rate(http_server_requests_seconds_count[1m])) by (uri)
+
+p95 Latency
+histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket[1m])) by (le))
+
+Error rate
+100 * sum(rate(http_server_requests_seconds_count{status=~"4..|5.."}[1m]))
+/
+sum(rate(http_server_requests_seconds_count[1m]))
+
+CPU usage
+100 * avg(process_cpu_usage{job="springboot-app"})
+
+Heap usage
+100 *
+sum(
+  jvm_memory_used_bytes{
+    area="heap",
+    job="springboot-app"
+  }
+) by (instance)
+/
+sum(
+  jvm_memory_max_bytes{
+    area="heap",
+    job="springboot-app"
+  }
+) by (instance)
+
+HikariCP Active Connections (Currently active DB connections)
+100 * hikaricp_connections_active / hikaricp_connections_max
