@@ -1,0 +1,63 @@
+time="2026-06-02T22:20:25+03:00" level=warning msg="Found orphan containers ([grafana prometheus springboot-app]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+Container docker-k6-run-fe79c7baa858 Creating
+Container docker-k6-run-fe79c7baa858 Created
+
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+
+     execution: local
+        script: /scripts/run.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 60 max VUs, 1m30s max duration (incl. graceful stop):
+              * e2e_flow: 60 looping VUs for 1m0s (exec: e2eTest, gracefulStop: 30s)
+
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......: 11723  173.242768/s
+    checks_succeeded...: 63.41% 7434 out of 11723
+    checks_failed......: 36.58% 4289 out of 11723
+
+    ✓ status is 201
+    ✗ response time < 500ms
+      ↳  23% — ✓ 286 / ✗ 948
+    ✓ id returned
+    ✓ name matches
+    ✗ status is 200
+      ↳  50% — ✓ 1234 / ✗ 1234
+    ✗ response time < 300ms
+      ↳  14% — ✓ 361 / ✗ 2107
+    ✓ correct id
+    ✓ available is true
+    ✓ name updated
+    ✓ description updated
+    ✓ available updated
+    ✓ status is 404
+
+    HTTP
+    http_req_duration..............: avg=1.02s min=788.54µs med=1.02s max=2.02s p(90)=1.8s  p(95)=1.91s
+      { expected_response:true }...: avg=1.01s min=788.54µs med=1.03s max=2.02s p(90)=1.79s p(95)=1.9s
+    http_req_failed................: 33.33% 1234 out of 3702
+    http_reqs......................: 3702   54.708243/s
+
+    EXECUTION
+    iteration_duration.............: avg=6.13s min=1.62s    med=6.2s  max=9.88s p(90)=7.91s p(95)=8.36s
+    iterations.....................: 617    9.11804/s
+    vus............................: 2      min=2            max=60
+    vus_max........................: 60     min=60           max=60
+
+    NETWORK
+    data_received..................: 667 kB 9.8 kB/s
+    data_sent......................: 520 kB 7.7 kB/s
+
+
+
+
+running (1m07.7s), 00/60 VUs, 617 complete and 0 interrupted iterations
+e2e_flow ✓ [======================================] 60 VUs  1m0s
