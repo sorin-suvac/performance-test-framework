@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Dell XPS 15",
+    "description": "15-inch premium laptop with Intel Core i7 processor, 16GB RAM, and 512GB SSD.",
+    "price": 1899.99,
+    "available": true
+  },
+  {
+    "name": "Samsung Galaxy S24",
+    "description": "Flagship smartphone featuring a 6.2-inch AMOLED display and 128GB storage.",
+    "price": 899.99,
+    "available": true
+  },
+  {
+    "name": "Logitech MX Master 3S",
+    "description": "Wireless productivity mouse with customizable buttons and USB-C charging.",
+    "price": 99.99,
+    "available": true
+  },
+  {
+    "name": "LG UltraWide Monitor",
+    "description": "34-inch curved ultrawide monitor with QHD resolution and HDR support.",
+    "price": 549.50,
+    "available": false
+  },
+  {
+    "name": "Sony WH-1000XM5",
+    "description": "Noise-cancelling wireless headphones with up to 30 hours of battery life.",
+    "price": 349.99,
+    "available": true
+  }
+]
