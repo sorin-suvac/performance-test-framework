@@ -4,4 +4,4 @@ services:
     container_name: k6
     volumes:
       - ../src/test/k6:/scripts
-    entrypoint: [ "k6", "run", "/scripts/run.js" ]
+    entrypoint: [ "k6", "run", "/scripts/main.js" ]
