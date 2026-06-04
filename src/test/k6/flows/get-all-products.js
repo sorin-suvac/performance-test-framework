@@ -1,5 +1,5 @@
 import {check, sleep} from "k6";
-import {getAllProducts} from "../services/product-api.js";
+import {getAllProducts} from "../services/product-service.js";
 
 export function getAllProductsFlow() {
     const res = getAllProducts();

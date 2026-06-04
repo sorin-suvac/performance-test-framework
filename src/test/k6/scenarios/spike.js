@@ -1,5 +1,5 @@
-import {e2eFlow} from "../flows/e2e.js";
 import thresholds from "../config/thresholds.js";
+import {getAllProductsFlow} from "../flows/get-all-products.js";
 
 export const options = {
     thresholds,
@@ -17,5 +17,5 @@ export const options = {
 };
 
 export default function () {
-    return e2eFlow();
+    return getAllProductsFlow();
 }

@@ -1,5 +1,5 @@
 import {check, fail, group, sleep} from "k6";
-import {createProduct, deleteProduct, getProduct, updateProduct} from "../services/product-api.js";
+import {createProduct, deleteProduct, getProduct, updateProduct} from "../services/product-service.js";
 import {getRandomProduct} from "../data/products.js";
 
 export function e2eFlow() {
