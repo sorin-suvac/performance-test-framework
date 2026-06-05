@@ -7,6 +7,6 @@ export const options = {
     iterations: 5
 };
 
-export default function () {
-    return getAllProductsFlow();
+export function exec() {
+    getAllProductsFlow();
 }

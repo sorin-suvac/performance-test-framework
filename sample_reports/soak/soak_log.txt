@@ -1,0 +1,157 @@
+time="2026-06-05T22:32:14+03:00" level=warning msg="Found orphan containers ([grafana prometheus springboot-app]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+Image grafana/k6 Pulling
+Image grafana/k6 Pulled
+Container docker-k6-run-e19fa5249049 Creating
+Container docker-k6-run-e19fa5249049 Created
+DEBU[0000] Logger format: TEXT
+DEBU[0000] k6 version: v2.0.0+dirty (commit/8c3be52cc1-dirty, go1.26.3, linux/amd64)
+DEBU[0000] Resolving and reading test '/scripts/main.js'...
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/main.js" originalModuleSpecifier=/scripts/main.js
+DEBU[0000] '/scripts/main.js' resolved to 'file:///scripts/main.js' and successfully loaded 409 bytes!
+DEBU[0000] Gathering k6 runtime options...
+DEBU[0000] Detecting test type for...                    test_path="file:///scripts/main.js"
+DEBU[0000] Trying to load as a JS test...                test_path="file:///scripts/main.js"
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/scenarios/index.js" originalModuleSpecifier=./scenarios/index.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/scenarios/load.js" originalModuleSpecifier=./load.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/flows/e2e.js" originalModuleSpecifier=../flows/e2e.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/services/product-service.js" originalModuleSpecifier=../services/product-service.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/config/env.js" originalModuleSpecifier=../config/env.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/data/products.js" originalModuleSpecifier=../data/products.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/config/thresholds.js" originalModuleSpecifier=../config/thresholds.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/scenarios/smoke.js" originalModuleSpecifier=./smoke.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/flows/get-all-products.js" originalModuleSpecifier=../flows/get-all-products.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/scenarios/soak.js" originalModuleSpecifier=./soak.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/scenarios/spike.js" originalModuleSpecifier=./spike.js
+DEBU[0000] Loading...                                    moduleSpecifier="file:///scripts/scenarios/stress.js" originalModuleSpecifier=./stress.js
+DEBU[0000] The current k6 binary already satisfies all the required dependencies, it isn't required to provision a new binary.  test_path="file:///scripts/main.js"
+DEBU[0000] Initializing k6 runner for '/scripts/main.js' (file:///scripts/main.js)...
+INFO[0000] Running test: soak                            source=console
+DEBU[0000] Runner successfully initialized!
+DEBU[0000] Parsing CLI flags...
+DEBU[0000] Consolidating config layers...
+DEBU[0000] Parsing thresholds and validating config...
+
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+DEBU[0000] Initializing the execution scheduler...
+DEBU[0000] Starting 3 outputs...                         component=output-manager
+DEBU[0000] Starting...                                   component=metrics-engine-ingester
+DEBU[0000] Started!                                      component=metrics-engine-ingester
+DEBU[0000] Started!                                      output=summary
+
+     execution: local
+        script: /scripts/main.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 10m30s max duration (incl. graceful stop):
+              * soak: 100 looping VUs for 10m0s (gracefulStop: 30s)
+
+DEBU[0000] Trapping interrupt signals so k6 can handle them gracefully...
+DEBU[0000] Starting emission of VUs and VUsMax metrics...
+DEBU[0000] Start of initialization                       executorsCount=1 neededVUs=100 phase=execution-scheduler-init
+
+[...]
+
+DEBU[0609] Executor finished successfully                executor=soak startTime=0s type=constant-vus
+DEBU[0609] teardown() is not defined or not exported, skipping!
+DEBU[0609] Test finished cleanly
+DEBU[0609] Sending usage report...
+DEBU[0609] Stopping vus and vux_max metrics emission...  phase=execution-scheduler-init
+DEBU[0609] Metrics emission of VUs and VUsMax metrics stopped
+DEBU[0609] Releasing signal trap...
+DEBU[0609] Waiting for metrics and traces processing to finish...
+DEBU[0609] Metrics and traces processing finished!
+DEBU[0609] Finalizing thresholds...
+DEBU[0609] Stopping...                                   component=metrics-engine-ingester
+DEBU[0609] Stopped!                                      component=metrics-engine-ingester
+DEBU[0609] Running thresholds on 8 metrics...            component=metrics-engine
+DEBU[0609] Thresholds on 6 metrics crossed: [checks http_req_duration http_req_duration{endpoint:create_product} http_req_duration{endpoint:get_product} http_req_duration{endpoint:update_product} http_req_failed]  component=metrics-engine
+DEBU[0609] Stopping outputs...
+DEBU[0609] Stopping 3 outputs...                         component=output-manager
+DEBU[0609] Stopping...                                   component=metrics-engine-ingester
+DEBU[0609] Stopped!                                      component=metrics-engine-ingester
+DEBU[0609] Generating the end-of-test summary...
+INFO[0609] Running test: soak                            source=console
+
+
+  █ THRESHOLDS
+
+    checks
+    ✗ 'rate>0.99' rate=62.77%
+
+    http_req_duration
+    ✗ 'p(95)<500' p(95)=1.9s
+    ✗ 'p(99)<1000' p(99)=1.98s
+
+      {endpoint:create_product}
+      ✗ 'p(95)<500' p(95)=1.9s
+
+      {endpoint:delete_product}
+      ✓ 'p(95)<500' p(95)=0s
+
+      {endpoint:get_all_products}
+      ✓ 'p(95)<300' p(95)=0s
+
+      {endpoint:get_product}
+      ✗ 'p(95)<200' p(95)=1.9s
+
+      {endpoint:update_product}
+      ✗ 'p(95)<500' p(95)=1.9s
+
+    http_req_failed
+    ✗ 'rate<0.01' rate=33.33%
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......: 137920 226.268772/s
+    checks_succeeded...: 62.77% 86581 out of 137920
+    checks_failed......: 37.22% 51339 out of 137920
+
+    ✗ status is 201
+      ↳  66% — ✓ 17240 / ✗ 8620
+    ✗ response time < 500ms
+      ↳  24% — ✓ 6429 / ✗ 19431
+    ✓ id returned
+    ✓ status is 200
+    ✗ response time < 200ms
+      ↳  9% — ✓ 2572 / ✗ 23288
+    ✓ name updated
+    ✓ description updated
+    ✓ available updated
+    ✓ status is 410
+    ✓ status is 404
+
+    HTTP
+    http_req_duration.................: avg=999.77ms min=402.78µs med=997.97ms max=2.02s  p(90)=1.8s  p(95)=1.9s
+      { endpoint:create_product }.....: avg=999.39ms min=1.55ms   med=989.61ms max=2.02s  p(90)=1.8s  p(95)=1.9s
+      { endpoint:delete_product }.....: avg=0s       min=0s       med=0s       max=0s     p(90)=0s    p(95)=0s
+      { endpoint:get_all_products }...: avg=0s       min=0s       med=0s       max=0s     p(90)=0s    p(95)=0s
+      { endpoint:get_product }........: avg=1s       min=402.78µs med=1s       max=2s     p(90)=1.79s p(95)=1.9s
+      { endpoint:update_product }.....: avg=1s       min=637.13µs med=1s       max=2s     p(90)=1.8s  p(95)=1.9s
+      { expected_response:true }......: avg=1s       min=551.27µs med=999.29ms max=2.02s  p(90)=1.8s  p(95)=1.9s
+    http_req_failed...................: 33.33% 17240 out of 51720
+    http_reqs.........................: 51720  84.850789/s
+
+    EXECUTION
+    iteration_duration................: avg=7s       min=2.36s    med=6.99s    max=11.81s p(90)=8.84s p(95)=9.33s
+    iterations........................: 8620   14.141798/s
+    vus...............................: 1      min=1              max=100
+    vus_max...........................: 100    min=100            max=100
+
+    NETWORK
+    data_received.....................: 10 MB  16 kB/s
+    data_sent.........................: 8.6 MB 14 kB/s
+
+
+
+
+running (10m09.5s), 000/100 VUs, 8620 complete and 0 interrupted iterations
+soak ✓ [======================================] 100 VUs  10m0s
+DEBU[0610] Usage report sent successfully
+DEBU[0610] Everything has finished, exiting k6 with an error!  error="thresholds on metrics 'checks, http_req_duration, http_req_duration{endpoint:create_product}, http_req_duration{endpoint:get_product}, http_req_duration{endpoint:update_product}, http_req_failed' have been crossed"
+ERRO[0610] thresholds on metrics 'checks, http_req_duration, http_req_duration{endpoint:create_product}, http_req_duration{endpoint:get_product}, http_req_duration{endpoint:update_product}, http_req_failed' have been crossed

@@ -1,0 +1,94 @@
+time="2026-06-05T22:53:06+03:00" level=warning msg="Found orphan containers ([grafana prometheus springboot-app]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+Image grafana/k6 Pulling
+Image grafana/k6 Pulled
+Container docker-k6-run-483824ca1d22 Creating
+Container docker-k6-run-483824ca1d22 Created
+INFO[0000] Running test: spike                           source=console
+
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+
+     execution: local
+        script: /scripts/main.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 1000 max VUs, 5m0s max duration (incl. graceful stop):
+              * spike: Up to 1000 looping VUs for 4m30s over 3 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+INFO[0000] Running test: spike                           source=console
+
+[...]
+
+INFO[0272] Running test: spike                           source=console
+
+
+  █ THRESHOLDS
+
+    checks
+    ✗ 'rate>0.99' rate=69.57%
+
+    http_req_duration
+    ✗ 'p(95)<500' p(95)=4.17s
+    ✗ 'p(99)<1000' p(99)=4.64s
+
+      {endpoint:create_product}
+      ✓ 'p(95)<500' p(95)=0s
+
+      {endpoint:delete_product}
+      ✓ 'p(95)<500' p(95)=0s
+
+      {endpoint:get_all_products}
+      ✗ 'p(95)<300' p(95)=4.17s
+
+      {endpoint:get_product}
+      ✓ 'p(95)<200' p(95)=0s
+
+      {endpoint:update_product}
+      ✓ 'p(95)<500' p(95)=0s
+
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.00%
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......: 81492  299.109321/s
+    checks_succeeded...: 69.57% 56698 out of 81492
+    checks_failed......: 30.42% 24794 out of 81492
+
+    ✓ status is 200
+    ✗ response time < 500ms
+      ↳  8% — ✓ 2370 / ✗ 24794
+    ✓ body not empty
+
+    HTTP
+    http_req_duration.................: avg=2.08s min=749.12µs med=1.92s max=5.01s p(90)=3.78s p(95)=4.17s
+      { endpoint:create_product }.....: avg=0s    min=0s       med=0s    max=0s    p(90)=0s    p(95)=0s
+      { endpoint:delete_product }.....: avg=0s    min=0s       med=0s    max=0s    p(90)=0s    p(95)=0s
+      { endpoint:get_all_products }...: avg=2.08s min=749.12µs med=1.92s max=5.01s p(90)=3.78s p(95)=4.17s
+      { endpoint:get_product }........: avg=0s    min=0s       med=0s    max=0s    p(90)=0s    p(95)=0s
+      { endpoint:update_product }.....: avg=0s    min=0s       med=0s    max=0s    p(90)=0s    p(95)=0s
+      { expected_response:true }......: avg=2.08s min=749.12µs med=1.92s max=5.01s p(90)=3.78s p(95)=4.17s
+    http_req_failed...................: 0.00%  0 out of 27164
+    http_reqs.........................: 27164  99.703107/s
+
+    EXECUTION
+    iteration_duration................: avg=3.08s min=1s       med=2.92s max=6.01s p(90)=4.78s p(95)=5.17s
+    iterations........................: 27164  99.703107/s
+    vus...............................: 10     min=10         max=1000
+    vus_max...........................: 1000   min=1000       max=1000
+
+    NETWORK
+    data_received.....................: 13 MB  49 kB/s
+    data_sent.........................: 2.4 MB 8.7 kB/s
+
+
+
+
+running (4m32.4s), 0000/1000 VUs, 27164 complete and 0 interrupted iterations
+spike ✓ [======================================] 0000/1000 VUs  4m30s
+ERRO[0273] thresholds on metrics 'checks, http_req_duration, http_req_duration{endpoint:get_all_products}' have been crossed

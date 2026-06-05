@@ -14,5 +14,5 @@ console.log(`Running test: ${TEST_TYPE}`);
 
 export const options = selected.options;
 export default function () {
-    return selected();
+    selected.exec();
 }

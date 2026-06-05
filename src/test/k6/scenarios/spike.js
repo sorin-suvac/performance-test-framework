@@ -8,14 +8,14 @@ export const options = {
             executor: "ramping-vus",
             startVUs: 10,
             stages: [
-                {duration: "1m", target: 50},
+                {duration: "2m", target: 50},
                 {duration: "30s", target: 1000},
-                {duration: "1m", target: 50}
+                {duration: "2m", target: 50}
             ]
         }
     }
 };
 
-export default function () {
-    return getAllProductsFlow();
+export function exec() {
+    getAllProductsFlow();
 }

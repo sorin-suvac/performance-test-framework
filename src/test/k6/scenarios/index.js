@@ -1,8 +1,8 @@
-import load from "./load.js";
-import smoke from "./smoke.js";
-import soak from "./soak.js";
-import spike from "./spike.js";
-import stress from "./stress.js";
+import * as load from "./load.js";
+import * as smoke from "./smoke.js";
+import * as soak from "./soak.js";
+import * as spike from "./spike.js";
+import * as stress from "./stress.js";
 
 export const scenarios = {
     load,

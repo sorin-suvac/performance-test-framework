@@ -7,11 +7,11 @@ export const options = {
         soak: {
             executor: "constant-vus",
             vus: 100,
-            duration: "4h"
+            duration: "10m"
         }
     }
 };
 
-export default function () {
-    return e2eFlow();
+export function exec() {
+    e2eFlow();
 }

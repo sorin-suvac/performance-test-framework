@@ -60,7 +60,7 @@ export function e2eFlow() {
     });
 
     group("Delete Product", () => {
-        const res = deleteProduct(1);
+        const res = deleteProduct(id);
 
         check(res, {
             "status is 410": (r) => r.status === 410,

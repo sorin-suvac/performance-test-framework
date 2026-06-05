@@ -17,6 +17,6 @@ export const options = {
     }
 };
 
-export default function () {
-    return e2eFlow();
+export function exec() {
+    e2eFlow();
 }
