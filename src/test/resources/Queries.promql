@@ -1,0 +1,47 @@
+# Requests Per Second (RPS)
+sum(rate(http_server_requests_seconds_count{uri!~"/actuator.*"}[1m])) by (uri, method)
+
+# Failed requests
+sum(rate(http_server_requests_seconds_count{status=~"4..|5.."}[1m]))
+
+# CPU usage (%)
+process_cpu_usage{job="springboot-app"} * 100
+
+# Heap usage (%)
+sum(
+  jvm_memory_used_bytes{
+    area="heap",
+    job="springboot-app"
+  }
+) by (instance)
+/
+sum(
+  jvm_memory_max_bytes{
+    area="heap",
+    job="springboot-app"
+  }
+) by (instance)
+* 100
+
+# HikariCP Active Connections
+hikaricp_connections_active
+
+# HikariCP Idle Connections
+hikaricp_connections_idle
+
+# HikariCP Pending Connections
+hikaricp_connections_pending
+
+# P95
+histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket[1m])) by (le))
+
+# P99
+histogram_quantile(0.99, sum(rate(http_server_requests_seconds_bucket[1m])) by (le))
+
+# P50
+histogram_quantile(0.50, sum(rate(http_server_requests_seconds_bucket[1m])) by (le))
+
+#Avg
+sum(rate(http_server_requests_seconds_sum[1m]))
+/
+sum(rate(http_server_requests_seconds_count[1m]))
